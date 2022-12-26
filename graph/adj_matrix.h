@@ -3,7 +3,6 @@
 #include <string>
 #include <fstream>
 #include <list>
-#include <iostream>
 
 class AdjMatrix {
 public:
