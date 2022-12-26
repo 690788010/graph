@@ -39,3 +39,6 @@
 *.tlog
 *.log
 *.idb
+
+# data
+largeG.txt
