@@ -1,11 +1,11 @@
 #include <iostream>
 
-#include "adj_matrix.h"
+#include "adj_list.h"
 
 int main() {
-	AdjMatrix adjMatrix("./data/mediumG.txt");
-	//std::cout << adjMatrix << std::endl;
-	for (auto& v : adjMatrix.adj(4)) {
+	AdjList adjList("./data/largeG.txt");
+	std::cout << adjList.hasEdge(7, 52993) << std::endl;
+	for (auto& v : adjList.adj(7)) {
 		std::cout << v << " ";
 	}
 }

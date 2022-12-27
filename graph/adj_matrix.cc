@@ -109,9 +109,9 @@ void AdjMatrix::_validateVertex(unsigned int v) {
 
 std::ostream& operator<<(std::ostream& os, AdjMatrix& matrix) {
 	os << "V = " << matrix.V() << ", E = " << matrix.E() << "\n";
-	unsigned int v = matrix.V();
-	for (unsigned int i = 0; i < v; i++) {
-		for (unsigned int j = 0; j < v; j++) {
+	unsigned int V = matrix.V();
+	for (unsigned int i = 0; i < V; i++) {
+		for (unsigned int j = 0; j < V; j++) {
 			os << matrix._adj[i][j] << " ";
 		}
 		os << "\n";

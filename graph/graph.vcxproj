@@ -139,9 +139,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="adj_list.h" />
     <ClInclude Include="adj_matrix.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="adj_list.cc" />
     <ClCompile Include="adj_matrix.cc" />
     <ClCompile Include="main.cc" />
   </ItemGroup>

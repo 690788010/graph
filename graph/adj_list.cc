@@ -9,8 +9,6 @@ AdjList::AdjList(std::string filename) {
 
 	std::string buf;
 
-	std::string buf;
-
 	// 读取顶点数量
 	getline(ifs, buf);
 	_v = stoul(buf);
@@ -47,7 +45,6 @@ AdjList::AdjList(std::string filename) {
 		}
 
 		// 平行边检测
-		;
 		if (find(_adj[a].begin(), _adj[a].end(), b) != _adj[a].end()) {
 			throw std::invalid_argument("Parallel Edges are Detected!");
 		}
@@ -58,7 +55,35 @@ AdjList::AdjList(std::string filename) {
 };
 
 AdjList::~AdjList() {
+	if (_adj != nullptr) {
+		delete[] _adj;
+		_adj = nullptr;
+	}
+};
 
+bool AdjList::hasEdge(unsigned int v, unsigned int w) {
+	_validateVertex(v);
+	_validateVertex(w);
+
+	return find(_adj[v].begin(), _adj[v].end(), w) != _adj[v].end();
+};
+
+std::list<unsigned int> AdjList::adj(unsigned int v) {
+	_validateVertex(v);
+
+	return _adj[v];
+};
+
+unsigned int AdjList::degree(int v) {
+	return adj(v).size();
+};
+
+unsigned int AdjList::V() {
+	return _v;
+};
+
+unsigned int AdjList::E() {
+	return _e;
 };
 
 void AdjList::_validateVertex(unsigned int v) {
@@ -67,4 +92,16 @@ void AdjList::_validateVertex(unsigned int v) {
 		msg += " is invalid!";
 		throw std::invalid_argument(msg);
 	}
+};
+
+std::ostream& operator<<(std::ostream& os, AdjList& list) {
+	os << "V = " << list.V() << ", E = " << list.E() << "\n";
+	unsigned int V = list.V();
+	for (unsigned int i = 0; i < V; i++) {
+		for (auto& v : list._adj[i]) {
+			os << v << " ";
+		}
+		os << "\n";
+	}
+	return os;
 };
