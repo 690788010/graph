@@ -141,10 +141,12 @@
   <ItemGroup>
     <ClInclude Include="adj_list.h" />
     <ClInclude Include="adj_matrix.h" />
+    <ClInclude Include="adj_set.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_list.cc" />
     <ClCompile Include="adj_matrix.cc" />
+    <ClCompile Include="adj_set.cc" />
     <ClCompile Include="main.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

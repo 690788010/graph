@@ -21,6 +21,9 @@
     <ClInclude Include="adj_list.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="adj_set.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_matrix.cc">
@@ -30,6 +33,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="adj_list.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="adj_set.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

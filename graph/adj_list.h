@@ -9,10 +9,10 @@ public:
 	AdjList(std::string filename);
 	~AdjList();
 
-	// 检测顶点v和顶点w之间是否存在一条边，时间复杂度为O(degree(v))
+	// 检测顶点v和顶点w之间是否存在一条边，时间复杂度为O(log(v))
 	bool hasEdge(unsigned int v, unsigned int w);
 
-	// 返回顶点v的邻接顶点，时间复杂度为O(1)
+	// 返回顶点v的邻接顶点，时间复杂度为O(degree(v))
 	std::list<unsigned int> adj(unsigned int v);
 
 	// 返回顶点v的度，时间复杂度为O(1)
