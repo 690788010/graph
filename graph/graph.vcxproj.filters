@@ -24,6 +24,12 @@
     <ClInclude Include="adj_set.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="graph_dfs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="graph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_matrix.cc">
@@ -36,6 +42,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="adj_set.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graph.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graph_dfs.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

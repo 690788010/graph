@@ -54,6 +54,28 @@ Graph::Graph(std::string filename) {
 	}
 };
 
+Graph::Graph(const Graph& graph) {
+	_v = graph._v;
+	_e = graph._e;
+	_adj = new std::set<unsigned int>[_v];
+	// 复制元素
+	for (unsigned int i = 0; i < _v; i++) {
+		for (auto v : graph._adj[i]) {
+			_adj[i].insert(v);
+		}
+	}
+};
+
+// 移动构造函数
+Graph::Graph(Graph&& graph) {
+	_v = graph._v;
+	graph._v = 0;
+	_e = graph._e;
+	graph._e = 0;
+	_adj = graph._adj;		// 从graph中夺取元素
+	graph._adj = nullptr;
+};
+
 Graph::~Graph() {
 	if (_adj != nullptr) {
 		delete[] _adj;
@@ -76,14 +98,10 @@ bool Graph::hasEdge(unsigned int v, unsigned int w) {
 	return _adj[v].find(w) != _adj[v].end();
 };
 
-std::list<unsigned int> Graph::adj(unsigned int v) {
+std::set<unsigned int>& Graph::adj(unsigned int v) {
 	_validateVertex(v);
 
-	std::list<unsigned int> res;
-	for (auto w : _adj[v]) {
-		res.push_back(w);
-	}
-	return res;
+	return _adj[v];
 };
 
 unsigned int Graph::degree(int v) {
@@ -98,6 +116,31 @@ unsigned int Graph::V() {
 
 unsigned int Graph::E() {
 	return _e;
+};
+
+Graph& Graph::operator=(const Graph& graph) {
+	_v = graph._v;
+	_e = graph._e;
+	std::set<unsigned int>* adj = new std::set<unsigned int>[_v];
+	for (unsigned int i = 0; i < _v; i++) {
+		for (auto v : graph._adj[i]) {
+			adj[i].insert(v);
+		}
+	}
+	delete[] _adj;			// 删除旧元素
+	_adj = adj;
+
+	return *this;
+};
+
+Graph& Graph::operator=(Graph&& graph) {
+	_v = graph._v;
+	graph._v = 0;
+	_e = graph._e;
+	graph._e = 0;
+	_adj = graph._adj;		// 从graph中夺取元素
+	graph._adj = nullptr;
+	return *this;
 };
 
 std::ostream& operator<<(std::ostream& os, Graph& set) {

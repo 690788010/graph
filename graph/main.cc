@@ -1,12 +1,16 @@
 #include <iostream>
 
-#include "adj_list.h"
+#include "graph.h"
+#include "graph_dfs.h"
 
 int main() {
-	AdjList adjSet("./data/mediumG.txt");
-	//std::cout << adjSet << std::endl;
-	std::cout << adjSet.hasEdge(9, 31592) << std::endl;
-	for (auto& v : adjSet.adj(9)) {
+	GraphDFS graphDFS(Graph("./data/tinyG.txt"));
+	for (auto& v : graphDFS.pre()) {
 		std::cout << v << " ";
 	}
+	std::cout << std::endl;
+	for (auto& v : graphDFS.post()) {
+		std::cout << v << " ";
+	}
+	std::cout << std::endl;
 }
