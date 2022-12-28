@@ -1,16 +1,19 @@
 #include <iostream>
 
 #include "graph.h"
-#include "graph_dfs.h"
+#include "cc.h"
 
 int main() {
-	GraphDFS graphDFS(Graph("./data/tinyG.txt"));
-	for (auto& v : graphDFS.pre()) {
-		std::cout << v << " ";
+	CC cc(Graph("./data/tinyG.txt"));
+	std::cout << cc.isConnected(4, 5) << std::endl;
+
+	int ccCount = cc.getCCCount();
+
+	std::unique_ptr<std::list<unsigned int>[]> res = cc.components();
+	for (int i = 0; i < ccCount; i++) {
+		for (auto& v : res[i]) {
+			std::cout << v << " ";
+		}
+		std::cout << std::endl;
 	}
-	std::cout << std::endl;
-	for (auto& v : graphDFS.post()) {
-		std::cout << v << " ";
-	}
-	std::cout << std::endl;
 }

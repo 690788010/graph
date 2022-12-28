@@ -146,6 +146,7 @@
     <ClInclude Include="adj_list.h" />
     <ClInclude Include="adj_matrix.h" />
     <ClInclude Include="adj_set.h" />
+    <ClInclude Include="cc.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="graph_dfs.h" />
   </ItemGroup>
@@ -153,6 +154,7 @@
     <ClCompile Include="adj_list.cc" />
     <ClCompile Include="adj_matrix.cc" />
     <ClCompile Include="adj_set.cc" />
+    <ClCompile Include="cc.cc" />
     <ClCompile Include="graph.cc" />
     <ClCompile Include="graph_dfs.cc" />
     <ClCompile Include="main.cc" />

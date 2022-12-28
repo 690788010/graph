@@ -34,6 +34,8 @@ public:
 
 	// 友元函数
 	friend std::ostream& operator<<(std::ostream& os, Graph& matrix);
+	// 友元类
+	friend class CC;
 
 private:
 	// 验证顶点合法性
