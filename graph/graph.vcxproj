@@ -149,6 +149,7 @@
     <ClInclude Include="cc.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="graph_dfs.h" />
+    <ClInclude Include="single_source_path.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_list.cc" />
@@ -158,6 +159,7 @@
     <ClCompile Include="graph.cc" />
     <ClCompile Include="graph_dfs.cc" />
     <ClCompile Include="main.cc" />
+    <ClCompile Include="single_source_path.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

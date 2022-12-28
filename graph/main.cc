@@ -1,19 +1,13 @@
 #include <iostream>
 
 #include "graph.h"
-#include "cc.h"
+#include "single_source_path.h"
 
 int main() {
-	CC cc(Graph("./data/tinyG.txt"));
-	std::cout << cc.isConnected(4, 5) << std::endl;
+	SingleSourcePath ssp(Graph("./data/largeG.txt"), 0);
 
-	int ccCount = cc.getCCCount();
-
-	std::unique_ptr<std::list<unsigned int>[]> res = cc.components();
-	for (int i = 0; i < ccCount; i++) {
-		for (auto& v : res[i]) {
-			std::cout << v << " ";
-		}
-		std::cout << std::endl;
+	for (auto& v : ssp.path(12)) {
+		std::cout << v << " ";
 	}
+	std::cout << std::endl;
 }

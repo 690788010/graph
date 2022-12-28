@@ -33,6 +33,9 @@
     <ClInclude Include="cc.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="single_source_path.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_matrix.cc">
@@ -54,6 +57,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="cc.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="single_source_path.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

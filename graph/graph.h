@@ -36,6 +36,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, Graph& matrix);
 	// 友元类
 	friend class CC;
+	friend class SingleSourcePath;
 
 private:
 	// 验证顶点合法性
