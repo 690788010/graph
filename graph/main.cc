@@ -1,13 +1,10 @@
 #include <iostream>
 
 #include "graph.h"
-#include "single_source_path.h"
+#include "cycle_detection.h"
 
 int main() {
-	SingleSourcePath ssp(Graph("./data/largeG.txt"), 0);
+	CycleDetection cd(Graph("./data/mediumG.txt"));
 
-	for (auto& v : ssp.path(12)) {
-		std::cout << v << " ";
-	}
-	std::cout << std::endl;
+	std::cout << cd.hasCycle() << std::endl;
 }

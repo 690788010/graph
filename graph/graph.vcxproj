@@ -147,6 +147,7 @@
     <ClInclude Include="adj_matrix.h" />
     <ClInclude Include="adj_set.h" />
     <ClInclude Include="cc.h" />
+    <ClInclude Include="cycle_detection.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="graph_dfs.h" />
     <ClInclude Include="single_source_path.h" />
@@ -156,6 +157,7 @@
     <ClCompile Include="adj_matrix.cc" />
     <ClCompile Include="adj_set.cc" />
     <ClCompile Include="cc.cc" />
+    <ClCompile Include="cycle_detection.cc" />
     <ClCompile Include="graph.cc" />
     <ClCompile Include="graph_dfs.cc" />
     <ClCompile Include="main.cc" />
