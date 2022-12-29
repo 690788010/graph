@@ -17,6 +17,13 @@ CycleDetection::CycleDetection(Graph g) : _g{ std::move(g) } {
 	}
 }
 
+CycleDetection::~CycleDetection() {
+	if (_visited != nullptr) {
+		delete[] _visited;
+		_visited = nullptr;
+	}
+};
+
 bool CycleDetection::hasCycle() {
 	return _hasCycle;
 };

@@ -5,6 +5,7 @@
 class CycleDetection {
 public:
 	CycleDetection(Graph g);
+	~CycleDetection();
 
 	// Õº «∑Ò”–ª∑
 	bool hasCycle();

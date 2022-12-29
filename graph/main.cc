@@ -1,10 +1,10 @@
 #include <iostream>
 
 #include "graph.h"
-#include "cycle_detection.h"
+#include "bipartition_detection.h"
 
 int main() {
-	CycleDetection cd(Graph("./data/mediumG.txt"));
+	BipartitionDetection bd(Graph("./data/tinyG.txt"));
 
-	std::cout << cd.hasCycle() << std::endl;
+	std::cout << bd.isBipartite() << std::endl;
 }
