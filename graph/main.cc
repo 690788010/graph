@@ -1,12 +1,12 @@
 #include <iostream>
 
 #include "graph.h"
-#include "graph_bfs.h"
+#include "single_source_path_bfs.h"
 
 int main() {
-	GraphBFS graphBFS(Graph("./data/largeG.txt"));
+	SingleSourcePathBFS ssPathBFS(Graph("./data/largeG.txt"), 0);
 
-	for (auto& v : graphBFS.order()) {
+	for (auto& v : ssPathBFS.path(11)) {
 		std::cout << v << " ";
 	}
 	std::cout << std::endl;

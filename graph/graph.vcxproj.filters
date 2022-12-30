@@ -45,6 +45,9 @@
     <ClInclude Include="graph_bfs.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="single_source_path_bfs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_matrix.cc">
@@ -78,6 +81,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="graph_bfs.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="single_source_path_bfs.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

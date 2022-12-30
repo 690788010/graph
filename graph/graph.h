@@ -37,6 +37,7 @@ public:
 	// 友元类
 	friend class CC;
 	friend class SingleSourcePath;
+	friend class SingleSourcePathBFS;
 
 private:
 	// 验证顶点合法性

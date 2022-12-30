@@ -153,6 +153,7 @@
     <ClInclude Include="graph_bfs.h" />
     <ClInclude Include="graph_dfs.h" />
     <ClInclude Include="single_source_path.h" />
+    <ClInclude Include="single_source_path_bfs.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_list.cc" />
@@ -166,6 +167,7 @@
     <ClCompile Include="graph_dfs.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="single_source_path.cc" />
+    <ClCompile Include="single_source_path_bfs.cc" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
