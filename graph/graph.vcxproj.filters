@@ -42,6 +42,9 @@
     <ClInclude Include="bipartition_detection.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="graph_bfs.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_matrix.cc">
@@ -72,6 +75,9 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="bipartition_detection.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="graph_bfs.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

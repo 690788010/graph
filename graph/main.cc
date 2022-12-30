@@ -1,10 +1,13 @@
 #include <iostream>
 
 #include "graph.h"
-#include "bipartition_detection.h"
+#include "graph_bfs.h"
 
 int main() {
-	BipartitionDetection bd(Graph("./data/tinyG.txt"));
+	GraphBFS graphBFS(Graph("./data/largeG.txt"));
 
-	std::cout << bd.isBipartite() << std::endl;
+	for (auto& v : graphBFS.order()) {
+		std::cout << v << " ";
+	}
+	std::cout << std::endl;
 }

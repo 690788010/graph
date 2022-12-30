@@ -150,6 +150,7 @@
     <ClInclude Include="cc.h" />
     <ClInclude Include="cycle_detection.h" />
     <ClInclude Include="graph.h" />
+    <ClInclude Include="graph_bfs.h" />
     <ClInclude Include="graph_dfs.h" />
     <ClInclude Include="single_source_path.h" />
   </ItemGroup>
@@ -161,6 +162,7 @@
     <ClCompile Include="cc.cc" />
     <ClCompile Include="cycle_detection.cc" />
     <ClCompile Include="graph.cc" />
+    <ClCompile Include="graph_bfs.cc" />
     <ClCompile Include="graph_dfs.cc" />
     <ClCompile Include="main.cc" />
     <ClCompile Include="single_source_path.cc" />
