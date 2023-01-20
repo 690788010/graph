@@ -154,6 +154,7 @@
     <ClInclude Include="graph_dfs.h" />
     <ClInclude Include="single_source_path.h" />
     <ClInclude Include="single_source_path_bfs.h" />
+    <ClInclude Include="weighted_graph.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_list.cc" />
@@ -168,6 +169,10 @@
     <ClCompile Include="main.cc" />
     <ClCompile Include="single_source_path.cc" />
     <ClCompile Include="single_source_path_bfs.cc" />
+    <ClCompile Include="weighted_graph.cc" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\gw.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

@@ -48,6 +48,9 @@
     <ClInclude Include="single_source_path_bfs.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="weighted_graph.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_matrix.cc">
@@ -86,5 +89,13 @@
     <ClCompile Include="single_source_path_bfs.cc">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="weighted_graph.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="data\gw.txt">
+      <Filter>资源文件</Filter>
+    </Text>
   </ItemGroup>
 </Project>
