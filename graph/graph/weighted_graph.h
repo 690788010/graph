@@ -24,8 +24,9 @@ public:
 	unsigned int degree(int v);
 
 	void _validateVertex(int v);
-	unsigned int V();
-	unsigned int E();
+	int V();
+	int E();
+	int getWeight(int v, int w);
 
 	// ÓÑÔªº¯Êı
 	friend std::ostream& operator<<(std::ostream& os, WeightedGraph& graph);

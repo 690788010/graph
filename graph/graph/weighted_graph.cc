@@ -120,12 +120,18 @@ void WeightedGraph::_validateVertex(int v) {
 	}
 };
 
-unsigned int WeightedGraph::V() {
+int WeightedGraph::V() {
 	return _v;
 };
 
-unsigned int WeightedGraph::E() {
+int WeightedGraph::E() {
 	return _e;
+};
+
+int WeightedGraph::getWeight(int v, int w) {
+	_validateVertex(v);
+	_validateVertex(w);
+	return _adj[v][w];
 };
 
 std::ostream& operator<<(std::ostream& os, WeightedGraph& graph) {
