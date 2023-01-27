@@ -1,6 +1,7 @@
 #include "graph.h"
+#include <iostream>
 
-Graph::Graph(std::string filename) {
+Graph::Graph(std::string filename, bool directed) : _directed{directed} {
 	std::ifstream ifs;
 	ifs.open(filename, std::ios::in);
 	if (!ifs.is_open()) {
@@ -50,7 +51,9 @@ Graph::Graph(std::string filename) {
 		}
 
 		_adj[a].insert(b);
-		_adj[b].insert(a);
+		if (!_directed) {
+			_adj[b].insert(a);
+		}
 	}
 };
 
@@ -83,12 +86,8 @@ Graph::~Graph() {
 	}
 };
 
-void Graph::_validateVertex(unsigned int v) {
-	if (v < 0 || v >= _v) {
-		std::string msg = "vertex " + v;
-		msg += " is invalid!";
-		throw std::invalid_argument(msg);
-	}
+bool Graph::isDirected() const {
+	return _directed;
 };
 
 bool Graph::hasEdge(unsigned int v, unsigned int w) {
@@ -116,6 +115,14 @@ unsigned int Graph::V() {
 
 unsigned int Graph::E() {
 	return _e;
+};
+
+void Graph::_validateVertex(unsigned int v) {
+	if (v < 0 || v >= _v) {
+		std::string msg = "vertex " + v;
+		msg += " is invalid!";
+		throw std::invalid_argument(msg);
+	}
 };
 
 Graph& Graph::operator=(const Graph& graph) {
@@ -147,6 +154,7 @@ std::ostream& operator<<(std::ostream& os, Graph& set) {
 	os << "V = " << set.V() << ", E = " << set.E() << "\n";
 	unsigned int V = set.V();
 	for (unsigned int i = 0; i < V; i++) {
+		os << i << ": ";
 		for (auto& v : set._adj[i]) {
 			os << v << " ";
 		}

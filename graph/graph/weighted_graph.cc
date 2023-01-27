@@ -1,7 +1,7 @@
 #include "weighted_graph.h"
 
 
-WeightedGraph::WeightedGraph(const std::string& filename) {
+WeightedGraph::WeightedGraph(const std::string& filename, bool directed) : _directed{ directed } {
 	std::ifstream ifs;
 	ifs.open(filename, std::ios::in);
 	if (!ifs.is_open()) {
@@ -36,8 +36,8 @@ WeightedGraph::WeightedGraph(const std::string& filename) {
 		int weight = stoi(buf.substr(idx2 + 1));
 
 		// 验证顶点合法性
-		_validateVertex(a);
-		_validateVertex(b);
+		validateVertex(a);
+		validateVertex(b);
 
 		// 自环边检测
 		if (a == b) {
@@ -50,7 +50,9 @@ WeightedGraph::WeightedGraph(const std::string& filename) {
 		}
 
 		_adj[a].insert(std::pair<int, int>(b, weight));
-		_adj[b].insert(std::pair<int, int>(a, weight));
+		if (!_directed) {
+			_adj[b].insert(std::pair<int, int>(a, weight));
+		}
 	}
 };
 
@@ -87,15 +89,19 @@ WeightedGraph::~WeightedGraph() {
 	}
 };
 
+bool WeightedGraph::isDirected() const {
+	return _directed;
+};
+
 bool WeightedGraph::hasEdge(int v, int w) {
-	_validateVertex(v);
-	_validateVertex(w);
+	validateVertex(v);
+	validateVertex(w);
 
 	return _adj[v].find(w) != _adj[v].end();
 };
 
 std::set<int> WeightedGraph::adj(int v) {
-	_validateVertex(v);
+	validateVertex(v);
 
 	std::set<int> res;
 	std::map<int, int>::iterator it = _adj[v].begin();
@@ -107,12 +113,12 @@ std::set<int> WeightedGraph::adj(int v) {
 };
 
 unsigned int WeightedGraph::degree(int v) {
-	_validateVertex(v);
+	validateVertex(v);
 
 	return _adj[v].size();
 };
 
-void WeightedGraph::_validateVertex(int v) {
+void WeightedGraph::validateVertex(int v) {
 	if (v < 0 || v >= _v) {
 		std::string msg = "vertex " + v;
 		msg += " is invalid!";
@@ -129,8 +135,8 @@ int WeightedGraph::E() {
 };
 
 int WeightedGraph::getWeight(int v, int w) {
-	_validateVertex(v);
-	_validateVertex(w);
+	validateVertex(v);
+	validateVertex(w);
 	return _adj[v][w];
 };
 

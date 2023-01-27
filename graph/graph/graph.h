@@ -8,12 +8,15 @@
 
 class Graph {
 public:
-	Graph(std::string filename);
+	Graph(std::string filename, bool directed = false);
 	// 拷贝构造函数
 	Graph(const Graph& graph);
 	// 移动构造函数
 	Graph(Graph&& graph);
 	~Graph();
+
+	// 是否为有向图
+	bool isDirected() const;
 
 	// 检测顶点v和顶点w之间是否存在一条边，时间复杂度为O(degree(v))
 	bool hasEdge(unsigned int v, unsigned int w);
@@ -45,6 +48,7 @@ private:
 
 	unsigned int _v;			// 顶点数
 	unsigned int _e;			// 边数
+	bool _directed;				// 标识是否为有向图
 	std::set<unsigned int>* _adj;
 };
 
