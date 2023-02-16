@@ -60,6 +60,7 @@ Graph::Graph(std::string filename, bool directed) : _directed{directed} {
 Graph::Graph(const Graph& graph) {
 	_v = graph._v;
 	_e = graph._e;
+	_directed = graph._directed;
 	_adj = new std::set<unsigned int>[_v];
 	// 复制元素
 	for (unsigned int i = 0; i < _v; i++) {
@@ -75,6 +76,7 @@ Graph::Graph(Graph&& graph) {
 	graph._v = 0;
 	_e = graph._e;
 	graph._e = 0;
+	_directed = graph._directed;
 	_adj = graph._adj;		// 从graph中夺取元素
 	graph._adj = nullptr;
 };

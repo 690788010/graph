@@ -54,6 +54,12 @@
     <ClInclude Include="dijkstra.h">
       <Filter>头文件</Filter>
     </ClInclude>
+    <ClInclude Include="max_flow.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="directed_cycle_detection.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="adj_matrix.cc">
@@ -96,6 +102,12 @@
       <Filter>源文件</Filter>
     </ClCompile>
     <ClCompile Include="dijkstra.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="max_flow.cc">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="directed_cycle_detection.cc">
       <Filter>源文件</Filter>
     </ClCompile>
   </ItemGroup>

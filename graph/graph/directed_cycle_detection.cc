@@ -1,13 +1,16 @@
-#include "cycle_detection.h"
+#include "directed_cycle_detection.h"
+#include <iostream>
 
-CycleDetection::CycleDetection(Graph g) : _g{ std::move(g) } {
-	if (_g.isDirected()) {
-		throw std::invalid_argument("CycleDetection only works in undirected graph.");
+DirectedCycleDetection::DirectedCycleDetection(Graph g) : _g{ std::move(g) } {
+	if (!_g.isDirected()) {
+		throw std::invalid_argument("DirectedCycleDetection only works in directed graph.");
 	}
 	unsigned int V = _g.V();
 	_visited = new bool[V];
+	_onPath = new bool[V];
 	for (unsigned int v = 0; v < V; v++) {
 		_visited[v] = false;
+		_onPath[v] = false;
 	}
 	_hasCycle = false;
 	for (unsigned int v = 0; v < V; v++) {
@@ -20,19 +23,20 @@ CycleDetection::CycleDetection(Graph g) : _g{ std::move(g) } {
 	}
 }
 
-CycleDetection::~CycleDetection() {
+DirectedCycleDetection::~DirectedCycleDetection() {
 	if (_visited != nullptr) {
 		delete[] _visited;
 		_visited = nullptr;
 	}
 };
 
-bool CycleDetection::hasCycle() {
+bool DirectedCycleDetection::hasCycle() {
 	return _hasCycle;
 };
 
-bool CycleDetection::_dfs(int v, int parent) {
+bool DirectedCycleDetection::_dfs(int v, int parent) {
 	_visited[v] = true;
+	_onPath[v] = true;
 
 	for (auto& w : _g.adj(v)) {
 		if (!_visited[w]) {
@@ -40,15 +44,17 @@ bool CycleDetection::_dfs(int v, int parent) {
 				return true;
 			}
 		}
-		else if (w != parent) {	
-			// 当前顶点的邻接顶点有被遍历过的顶点,且该顶点不是上一个顶点（parent），则表明该无向图有环。
+		else if (_onPath[w]) {
+			// 当前顶点的邻接顶点有被遍历过的顶点,且该顶点在当前路径中，则表明该有向图有环。
 			return true;
 		}
 	}
+
+	_onPath[v] = false;
 	return false;
 };
 
-bool CycleDetection::_dfs2(unsigned int v, int parent) {
+bool DirectedCycleDetection::_dfs2(unsigned int v, int parent) {
 	// 入栈
 	std::list<unsigned int> stack;
 	stack.push_back(v);
@@ -62,13 +68,15 @@ bool CycleDetection::_dfs2(unsigned int v, int parent) {
 			continue;
 		}
 		_visited[s] = true;
+		_onPath[s] = true;
 
 		// 将当前顶点的邻接顶点加入栈中
 		for (auto& w : _g.adj(s)) {
 			if (!_visited[w]) {
 				stack.push_back(w);
 			}
-			else if (w != parent) {
+			else if (_onPath[w]) {
+				// 当前顶点的邻接顶点有被遍历过的顶点,且该顶点在当前路径中，则表明该有向图有环。
 				return true;
 			}
 		}

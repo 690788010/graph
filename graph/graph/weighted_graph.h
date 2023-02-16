@@ -8,6 +8,7 @@
 class WeightedGraph {
 public:
 	WeightedGraph(const std::string& filename, bool directed = false);
+	WeightedGraph(int v, bool directed);
 	// 拷贝构造函数
 	WeightedGraph(const WeightedGraph& graph);
 	// 移动构造函数
@@ -16,6 +17,12 @@ public:
 
 	// 是否为有向图
 	bool isDirected() const;
+
+	// 往图中添加一条路径
+	void addEdge(int a, int b, int weight);
+
+	// 设置某条边的权值
+	void setWeight(int v, int w, int weight);
 
 	// 检测顶点v和顶点w之间是否存在一条边，时间复杂度为O(log(v))
 	bool hasEdge(int v, int w);

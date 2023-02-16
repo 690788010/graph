@@ -150,9 +150,11 @@
     <ClInclude Include="cc.h" />
     <ClInclude Include="cycle_detection.h" />
     <ClInclude Include="dijkstra.h" />
+    <ClInclude Include="directed_cycle_detection.h" />
     <ClInclude Include="graph.h" />
     <ClInclude Include="graph_bfs.h" />
     <ClInclude Include="graph_dfs.h" />
+    <ClInclude Include="max_flow.h" />
     <ClInclude Include="single_source_path.h" />
     <ClInclude Include="single_source_path_bfs.h" />
     <ClInclude Include="weighted_graph.h" />
@@ -165,10 +167,12 @@
     <ClCompile Include="cc.cc" />
     <ClCompile Include="cycle_detection.cc" />
     <ClCompile Include="dijkstra.cc" />
+    <ClCompile Include="directed_cycle_detection.cc" />
     <ClCompile Include="graph.cc" />
     <ClCompile Include="graph_bfs.cc" />
     <ClCompile Include="graph_dfs.cc" />
     <ClCompile Include="main.cc" />
+    <ClCompile Include="max_flow.cc" />
     <ClCompile Include="single_source_path.cc" />
     <ClCompile Include="single_source_path_bfs.cc" />
     <ClCompile Include="weighted_graph.cc" />

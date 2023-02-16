@@ -16,11 +16,12 @@ WeightedGraph::WeightedGraph(const std::string& filename, bool directed) : _dire
 	if (_v < 0) {
 		throw std::invalid_argument("V must be non-negative!");
 	}
+	_e = 0;
 
 	// 读取边数量
 	getline(ifs, buf);
-	_e = stoi(buf);
-	if (_e < 0) {
+	int e = stoi(buf);
+	if (e < 0) {
 		throw std::invalid_argument("E must be non-negative!");
 	}
 
@@ -35,31 +36,24 @@ WeightedGraph::WeightedGraph(const std::string& filename, bool directed) : _dire
 		int b = stoi(buf.substr(idx + 1, idx2));
 		int weight = stoi(buf.substr(idx2 + 1));
 
-		// 验证顶点合法性
-		validateVertex(a);
-		validateVertex(b);
-
-		// 自环边检测
-		if (a == b) {
-			throw std::invalid_argument("Self Loop is Detected!");
-		}
-
-		// 平行边检测
-		if (_adj[a].find(b) != _adj[a].end()) {
-			throw std::invalid_argument("Parallel Edges are Detected!");
-		}
-
-		_adj[a].insert(std::pair<int, int>(b, weight));
-		if (!_directed) {
-			_adj[b].insert(std::pair<int, int>(a, weight));
-		}
+		this->addEdge(a, b, weight);
 	}
+};
+
+WeightedGraph::WeightedGraph(int v, bool directed) {
+	_v = v;
+	_directed = directed;
+	_e = 0;
+
+	// 初始化邻接表
+	_adj = new std::map<int, int>[_v];
 };
 
 // 拷贝构造函数
 WeightedGraph::WeightedGraph(const WeightedGraph& graph) {
 	_v = graph._v;
 	_e = graph._e;
+	_directed = graph._directed;
 
 	// 初始化邻接表
 	_adj = new std::map<int, int>[_v];
@@ -77,6 +71,7 @@ WeightedGraph::WeightedGraph(const WeightedGraph& graph) {
 WeightedGraph::WeightedGraph(WeightedGraph&& graph) {
 	_v = graph._v;
 	_e = graph._e;
+	_directed = graph._directed;
 
 	_adj = graph._adj;		// 从graph中夺取元素
 	graph._adj = nullptr;
@@ -91,6 +86,45 @@ WeightedGraph::~WeightedGraph() {
 
 bool WeightedGraph::isDirected() const {
 	return _directed;
+};
+
+// 往图中添加一条路径
+void WeightedGraph::addEdge(int a, int b, int weight) {
+	// 验证顶点合法性
+	validateVertex(a);
+	validateVertex(b);
+
+	// 自环边检测
+	if (a == b) {
+		throw std::invalid_argument("Self Loop is Detected!");
+	}
+
+	// 平行边检测
+	if (_adj[a].find(b) != _adj[a].end()) {
+		throw std::invalid_argument("Parallel Edges are Detected!");
+	}
+
+	_adj[a].insert(std::pair<int, int>(b, weight));
+	if (!_directed) {
+		_adj[b].insert(std::pair<int, int>(a, weight));
+	}
+
+	this->_e++;
+};
+
+void WeightedGraph::setWeight(int v, int w, int weight) {
+	if (!hasEdge(v, w)) {
+		std::string msg = "No edge ";
+		msg += v;
+		msg += "-";
+		msg += w;
+		throw std::invalid_argument(msg);
+	}
+
+	_adj[v][w] = weight;
+	if (!_directed) {
+		_adj[w][v] = weight;
+	}
 };
 
 bool WeightedGraph::hasEdge(int v, int w) {
